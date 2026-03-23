@@ -9,7 +9,7 @@ The purpose of this project is to build a responsive JavaScript web application 
 ## API Used
 This project uses the Superhero API to fetch superhero data such as character names, images, biography, and powerstats.
 
-Main API endpoint:
+Main API endpoint: https://superheroapi.com/api/access-token
 
 
 ## Planned Features
