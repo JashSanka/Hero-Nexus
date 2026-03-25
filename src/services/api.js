@@ -7,7 +7,7 @@ export async function searchHeroName(name){
 }
 
 export async function searchHeroId(id){
-    const response = await fetch(`${BASE_URL}/${TOKEN}/${id}`);
+    const response = await fetch(`${URL}/${TOKEN}/${id}`);
   const data = await response.json();
   return data;
 }
