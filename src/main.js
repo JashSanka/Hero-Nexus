@@ -8,6 +8,12 @@ import { searchHeroName,searchHeroId } from "./services/api.js";
 
 // test();
 
+// Display all character cards
+let allHeroes=[]
+async function loadInitialHeroes(){
+  
+}
+
 const input=document.getElementById("searchInput");
 const btn=document.getElementById("searchBtn");
 const resultsDiv = document.getElementById("results");
