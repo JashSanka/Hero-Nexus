@@ -1,4 +1,4 @@
-# Hero Nexus
+# Hero-Nexus
 
 ## Project Overview
 Hero Nexus is an interactive superhero character explorer web application. It allows users to browse superhero data, search for characters, filter and sort results, and view more detailed information about each character.
@@ -7,10 +7,17 @@ Hero Nexus is an interactive superhero character explorer web application. It al
 The purpose of this project is to build a responsive JavaScript web application that shows API integration, clean and interactive UI, array higher-order functions.
 
 ## API Used
-This project uses the Superhero API to fetch superhero data such as character names, images, biography, and powerstats.
+This project uses the Akbab superhero api to fetch superhero data such as character names, images, biography, and powerstats.
 
-Main API endpoint: https://superheroapi.com/api/access-token
-
+Base URL: https://akabab.github.io/superhero-api/api
+Routes:
+> /all.json
+> /id
+> /powerstats
+> /appearance
+> /biography
+> /connections
+> /work
 
 ## Planned Features
 - Fetch and display superhero data dynamically
@@ -29,7 +36,7 @@ This project focuses on building a clean, interactive and Nerdy superhero explor
 - CSS
 - JavaScript
 - Vite
-- Superhero API
+- Akbab Superhero API
 - localStorage
 
 ## Setup Instructions
