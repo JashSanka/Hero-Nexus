@@ -8,31 +8,41 @@
     <link rel="stylesheet" href="src/style.css">
   </head>
   <body>
-    <nav>
-      <div class="logo">
-        <h5>Hero-Nexus</h5>
-      </div>
-       <div id="some">
-      <div class="search-selection">
-      <input type="text" id="searchInput" placeholder="search character...">
-      <button id="searchBtn">Search</button>
-      </div>
-      
-    </div>
-      <div class="list">
-        <ul>
-          <li><a href="./index.html">Home</a></li>
-          <li><a href="">Favourites ❤️</a></li>
-        </ul>
-      </div>
-    </nav>
-   <div id="results"></div>
-   <main>
     <div id="app">
-      
-    </div>
-   </main>
+      <nav id="navi">
+        <div class="logo">Hero-Nexus</div>
+        <div class="nav-right">
+          <a href="#">Home</a>
+          <a href="#">Favourites</a>
+          <a href="#">Sign In</a>
+        </div>
+      </nav>
+      <aside id="sidebar" class="hidden">
+      <h3>Categories</h3>
+      <button>Avengers</button>
+      <button>X-Men</button>
+      <button>Guardians</button>
+      <button>Inhumans</button>
+      <button>Fantastic Four</button>
+    </aside>
 
-    <script type="module" src="/src/main.js"></script>
+    <section id="landing">
+      <h1 class="main-logo">Hero Nexus</h1>
+
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search Marvel Characters..." />
+        <button id="searchBtn">Search</button>
+      </div>
+    </section>
+
+    <section id="results-section" class="hidden">
+      <div id="results"></div>
+    </section>
+
+     <footer>
+      <p>Hero Nexus • Made with ❤️ for Nerds by a Nerd</p>
+    </footer>
+    </div>
+  <script type="module" src="/src/main.js"></script>
   </body>
 </html>
