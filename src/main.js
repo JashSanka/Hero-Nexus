@@ -59,25 +59,58 @@ function displayResult(heroes){
 function showHeroDetails(hero){
   const app=document.querySelector("#app");
   app.innerHTML = `
+  <div class="details-page">
+
     <button id="backBtn">⬅ Back</button>
 
-    <div class="hero-details">
-      <img src="${hero.images.lg}" alt="${hero.name}" />
-      <h1>${hero.name}</h1>
-      <p><strong>Full Name:</strong> ${hero.biography.fullName || "Unknown"}</p>
-      <p><strong>Publisher:</strong> ${hero.biography.publisher}</p>
+    <div class="details-container">
 
-      <h2>Power Stats</h2>
-      <ul>
-        <li>Intelligence: ${hero.powerstats.intelligence}</li>
-        <li>Strength: ${hero.powerstats.strength}</li>
-        <li>Speed: ${hero.powerstats.speed}</li>
-        <li>Durability: ${hero.powerstats.durability}</li>
-        <li>Power: ${hero.powerstats.power}</li>
-        <li>Combat: ${hero.powerstats.combat}</li>
-      </ul>
+      <div class="details-left">
+        <img src="${hero.images.lg}" alt="${hero.name}" />
+      </div>
+
+      <div class="details-right">
+        <h1>${hero.name}</h1>
+
+        <p><strong>Full Name:</strong> ${hero.biography.fullName || "Unknown"}</p>
+        <p><strong>Publisher:</strong> ${hero.biography.publisher}</p>
+
+        <h2>Power Stats</h2>
+
+        <div class="stat">
+          <span>Intelligence</span>
+          <div class="bar"><div style="width:${hero.powerstats.intelligence}%"></div></div>
+        </div>
+
+        <div class="stat">
+          <span>Strength</span>
+          <div class="bar"><div style="width:${hero.powerstats.strength}%"></div></div>
+        </div>
+
+        <div class="stat">
+          <span>Speed</span>
+          <div class="bar"><div style="width:${hero.powerstats.speed}%"></div></div>
+        </div>
+
+        <div class="stat">
+          <span>Durability</span>
+          <div class="bar"><div style="width:${hero.powerstats.durability}%"></div></div>
+        </div>
+
+        <div class="stat">
+          <span>Power</span>
+          <div class="bar"><div style="width:${hero.powerstats.power}%"></div></div>
+        </div>
+
+        <div class="stat">
+          <span>Combat</span>
+          <div class="bar"><div style="width:${hero.powerstats.combat}%"></div></div>
+        </div>
+
+      </div>
     </div>
-  `;
+  </div>
+`;
 
   document.getElementById("backBtn").addEventListener("click", () => {
     location.reload(); // simple for now
@@ -85,46 +118,45 @@ function showHeroDetails(hero){
 }
 
 // filterheroes my affiliations
-const filterBtns=document.querySelectorAll(".filter-btn");
-filterBtns.forEach(btn=>{
-  btn.addEventListener("click",()=>{
+const filterBtns = document.querySelectorAll(".filter-btn");
+
+filterBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+
     filterBtns.forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
-    const team=btn.dataset.team;
-    filterHeroes(team);
-  })
-})
-function filterHeroes(team){
-  let filtered=[];
-  if (team === "all") {
-    displayResults(allHeroes);
+
+    const type = btn.dataset.type;
+    const value = btn.dataset.value;
+
+    filterHeroes(type, value);
+  });
+});
+function filterHeroes(type, value) {
+  if (!type) {
+    displayResult(allHeroes);
     return;
   }
-  if (team==="avengers"){
-    filtered=allHeroes.filter(hero=>hero.connections.groupAffiliation?.toLowerCase().includes("avengers"));
-  }
-  else if (team === "xmen") {
+
+  let filtered = [];
+
+  if (type === "team") {
+
+    const keyword = value === "xmen" ? "x-men" : value;
+
     filtered = allHeroes.filter(hero =>
-      hero.connections.groupAffiliation?.toLowerCase().includes("x-men")
-    );
-  }
-   else if (team === "guardians") {
-    filtered = allHeroes.filter(hero =>
-      hero.connections.groupAffiliation?.toLowerCase().includes("guardians")
-    );
-  }
-  else if (team === "fantastic") {
-    filtered = allHeroes.filter(hero =>
-      hero.connections.groupAffiliation?.toLowerCase().includes("fantastic")
-    );
-  }
-  else if (team === "inhumans") {
-    filtered = allHeroes.filter(hero =>
-      hero.connections.groupAffiliation?.toLowerCase().includes("inhumans")
+      hero.connections.groupAffiliation?.toLowerCase().includes(keyword)
     );
   }
 
-  displayResult(filtered)
+  else if (type === "alignment") {
+
+    filtered = allHeroes.filter(hero =>
+      hero.biography.alignment?.toLowerCase() === value
+    );
+  }
+
+  displayResult(filtered);
 }
 
 loadHeroes();
