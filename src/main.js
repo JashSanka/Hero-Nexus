@@ -84,4 +84,47 @@ function showHeroDetails(hero){
   });
 }
 
+// filterheroes my affiliations
+const filterBtns=document.querySelectorAll(".filter-btn");
+filterBtns.forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    filterBtns.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    const team=btn.dataset.team;
+    filterHeroes(team);
+  })
+})
+function filterHeroes(team){
+  let filtered=[];
+  if (team === "all") {
+    displayResults(allHeroes);
+    return;
+  }
+  if (team==="avengers"){
+    filtered=allHeroes.filter(hero=>hero.connections.groupAffiliation?.toLowerCase().includes("avengers"));
+  }
+  else if (team === "xmen") {
+    filtered = allHeroes.filter(hero =>
+      hero.connections.groupAffiliation?.toLowerCase().includes("x-men")
+    );
+  }
+   else if (team === "guardians") {
+    filtered = allHeroes.filter(hero =>
+      hero.connections.groupAffiliation?.toLowerCase().includes("guardians")
+    );
+  }
+  else if (team === "fantastic") {
+    filtered = allHeroes.filter(hero =>
+      hero.connections.groupAffiliation?.toLowerCase().includes("fantastic")
+    );
+  }
+  else if (team === "inhumans") {
+    filtered = allHeroes.filter(hero =>
+      hero.connections.groupAffiliation?.toLowerCase().includes("inhumans")
+    );
+  }
+
+  displayResult(filtered)
+}
+
 loadHeroes();

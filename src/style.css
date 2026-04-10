@@ -168,7 +168,10 @@ footer{
   padding: 10px;
   background: rgba(0,0,0,0.3);
 }
-
+.filter-btn.active {
+  background: rgb(101, 101, 204);
+  transform: scale(1.05);
+}
 /* .hidden {
   display: none;
 } */
